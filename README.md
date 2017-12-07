@@ -2,14 +2,14 @@
 
 ![Giraffe](https://raw.githubusercontent.com/giraffe-fsharp/Giraffe/master/giraffe.png)
 
-Razor view engine and http handlers for the Giraffe web framework.
+Razor view engine http handlers for the Giraffe web framework.
 
 [![NuGet Info](https://buildstats.info/nuget/Giraffe.Razor?includePreReleases=true)](https://www.nuget.org/packages/Giraffe.Razor/)
 
 | Windows | Linux |
 | :------ | :---- |
-| [![Windows Build status](https://ci.appveyor.com/api/projects/status/0ft2427dflip7wti/branch/develop?svg=true)](https://ci.appveyor.com/project/dustinmoris/giraffe/branch/develop) | [![Linux Build status](https://travis-ci.org/dustinmoris/Giraffe.svg?branch=develop)](https://travis-ci.org/dustinmoris/Giraffe/builds?branch=develop) |
-| [![Windows Build history](https://buildstats.info/appveyor/chart/dustinmoris/giraffe?branch=develop&includeBuildsFromPullRequest=false)](https://ci.appveyor.com/project/dustinmoris/giraffe/history) | [![Linux Build history](https://buildstats.info/travisci/chart/dustinmoris/Giraffe?branch=develop&includeBuildsFromPullRequest=false)](https://travis-ci.org/dustinmoris/Giraffe/builds?branch=develop) |
+| [![Windows Build status](https://ci.appveyor.com/api/projects/status/914030ec0lrc0vti/branch/master?svg=true)](https://ci.appveyor.com/project/dustinmoris/giraffe-razor/branch/master) | [![Linux Build status](https://travis-ci.org/giraffe-fsharp/GiraffeRazor.svg?branch=develop)](https://travis-ci.org/giraffe-fsharp/Giraffe.Razor/builds?branch=develop) |
+| [![Windows Build history](https://buildstats.info/appveyor/chart/dustinmoris/giraffe-razor?branch=develop&includeBuildsFromPullRequest=false)](https://ci.appveyor.com/project/dustinmoris/giraffe-razor/history) | [![Linux Build history](https://buildstats.info/travisci/chart/giraffe-fsharp/Giraffe.Razor?branch=develop&includeBuildsFromPullRequest=false)](https://travis-ci.org/giraffe-fsharp/Giraffe.Razor/builds?branch=develop) |
 
 ## Table of contents
 
