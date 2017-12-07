@@ -9,8 +9,8 @@ build_script:
   - ps: .\build.ps1 -Release -Pack
 test: off
 artifacts:
-  - path: '**\Giraffe.Razor.nupkg'
-    name: Giraffe.Razor NuGet package
+  - path: '**\Giraffe.*.nupkg'
+    name: Giraffe NuGet packages
 nuget:
   account_feed: false
   project_feed: false
