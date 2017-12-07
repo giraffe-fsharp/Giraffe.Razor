@@ -117,6 +117,7 @@ if ($ClearOnly.IsPresent) {
 }
 
 $giraffeRazor = ".\src\Giraffe.Razor\Giraffe.Razor.fsproj"
+$sampleApp    = ".\samples\GiraffeRazorSample\GiraffeRazorSample.fsproj"
 
 Update-AppVeyorBuildVersion $giraffeRazor
 Test-Version $giraffeRazor
@@ -129,6 +130,22 @@ Write-Host "Building Giraffe.Razor..." -ForegroundColor Magenta
 $framework = Get-FrameworkArg $giraffeRazor
 dotnet-restore $giraffeRazor
 dotnet-build   $giraffeRazor "-c $configuration $framework"
+
+if (!$ExcludeSamples.IsPresent -and !$Run.IsPresent)
+{
+    Write-Host "Building and testing samples..." -ForegroundColor Magenta
+
+    dotnet-restore $sampleApp
+    dotnet-build   $sampleApp
+}
+
+if ($Run.IsPresent)
+{
+    Write-Host "Launching sample application..." -ForegroundColor Magenta
+    dotnet-restore $sampleApp
+    dotnet-build   $sampleApp
+    dotnet-run     $sampleApp
+}
 
 if ($Pack.IsPresent)
 {
