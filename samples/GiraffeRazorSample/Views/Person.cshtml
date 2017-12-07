@@ -1,0 +1,13 @@
+@model GiraffeRazorSample.Person
+@{
+    Layout = "_Layout";
+}
+
+<div>
+    <h3>Hello, @Model.Name</h3>
+</div>
+<div>
+    @{
+        await Html.RenderPartialAsync("Partial");
+    }
+</div>

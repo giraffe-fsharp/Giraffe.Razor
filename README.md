@@ -16,6 +16,7 @@ Razor view engine and http handlers for the Giraffe web framework.
 - [Documentation](#documentation)
     - [razorView](#razorview)
     - [razorHtmlView](#razorhtmlview)
+- [Samples](#samples)
 - [More information](#more-information)
 - [License](#license)
 
@@ -85,9 +86,13 @@ let app =
     ]
 ```
 
+## Samples
+
+Please find a fully functioning sample application under [./samples/GiraffeRazorSample/](https://github.com/giraffe-fsharp/Giraffe.Razor/tree/master/samples/GiraffeRazorSample).
+
 ## More information
 
-For more information about the basics of Giraffe, how to set up a development environment, contribution guidelines or anything else of interest please visit the [main documentation](https://github.com/giraffe-fsharp/Giraffe#table-of-contents) page.
+For more information about Giraffe, how to set up a development environment, contribution guidelines and more please visit the [main documentation](https://github.com/giraffe-fsharp/Giraffe#table-of-contents) page.
 
 ## License
 

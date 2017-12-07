@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 { color: chocolate; }
+
+input[type=submit] {
+    display: block;
+    margin: 1em 0;
+    padding: .5em 1em;
+    background: #eee;
+    color: #222;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background: #f1f1f1;
+}
