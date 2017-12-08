@@ -47,6 +47,7 @@ type Startup() =
 Use the razorView function:
 
 ```fsharp
+open Giraffe
 open Giraffe.Razor
 
 [<CLIMutable>]
