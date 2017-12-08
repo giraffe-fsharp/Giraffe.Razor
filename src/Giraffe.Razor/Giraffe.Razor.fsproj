@@ -20,6 +20,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/giraffe-fsharp/Giraffe.Razor</RepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
     <NetStandardImplicitPackageVersion>2.0</NetStandardImplicitPackageVersion>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
