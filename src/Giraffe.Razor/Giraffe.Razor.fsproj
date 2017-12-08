@@ -13,7 +13,7 @@
     <OutputType>Library</OutputType>
     <PackageId>Giraffe.Razor</PackageId>
     <PackageTags>Giraffe;Razor;ASP.NET Core;Lambda;FSharp;Functional;Http;Web;Framework;Micro;Service</PackageTags>
-    <PackageReleaseNotes>https://raw.githubusercontent.com/giraffe-fsharp/Giraffe/master/RELEASE_NOTES.md</PackageReleaseNotes>
+    <PackageReleaseNotes>https://raw.githubusercontent.com/giraffe-fsharp/Giraffe.Razor/master/RELEASE_NOTES.md</PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/giraffe-fsharp/Giraffe/master/giraffe-64x64.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/giraffe-fsharp/Giraffe.Razor</PackageProjectUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/giraffe-fsharp/Giraffe.Razor/master/LICENSE</PackageLicenseUrl>
