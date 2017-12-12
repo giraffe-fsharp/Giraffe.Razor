@@ -4,10 +4,12 @@ namespace Giraffe.Razor
 module HttpHandlers =
 
     open System.Text
+    open System.Threading.Tasks
     open Microsoft.AspNetCore.Http
     open Microsoft.AspNetCore.Mvc.Razor
     open Microsoft.AspNetCore.Mvc.ViewFeatures
     open Microsoft.Extensions.DependencyInjection
+    open Microsoft.AspNetCore.Antiforgery
     open Giraffe
 
     /// Reads a razor view from disk and compiles it with the given model and sets
@@ -29,3 +31,16 @@ module HttpHandlers =
     /// the compiled output as the HTTP reponse with a Content-Type of text/html.
     let razorHtmlView (viewName : string) (model : 'T) : HttpHandler =
         razorView "text/html" viewName model
+
+    /// Validates an anti forgery token.
+    /// If the token is valid the handler will procceed as normal,
+    /// otherwise it will execute the invalidTokenHandler.
+    let validateAntiforgeryToken (invalidTokenHandler : HttpHandler) : HttpHandler =
+        fun next ctx ->
+            task {
+                let antiforgery = ctx.GetService<IAntiforgery>()
+                let! isValid    = antiforgery.IsRequestValidAsync ctx
+                return!
+                    if isValid then next ctx
+                    else invalidTokenHandler (Some >> Task.FromResult) ctx
+            }
