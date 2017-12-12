@@ -16,6 +16,7 @@ Razor view engine http handlers for the Giraffe web framework.
 - [Documentation](#documentation)
     - [razorView](#razorview)
     - [razorHtmlView](#razorhtmlview)
+    - [validateAntiforgeryToken](#validateantiforgerytoken)
 - [Samples](#samples)
 - [More information](#more-information)
 - [License](#license)
@@ -102,6 +103,48 @@ let app =
         // Assuming there is a view called "Index.cshtml"
         route  "/" >=> razorHtmlView "Index" model
     ]
+```
+
+### validateAntiforgeryToken
+
+`validateAntiforgeryToken` allows one to validate an anti forgery token created by the `Microsoft.AspNetCore.Antiforgery` API.
+
+#### Example:
+
+Add the razor engine service during start-up:
+
+```fsharp
+open Giraffe
+open Giraffe.Razor
+
+type Startup() =
+    member __.ConfigureServices (services : IServiceCollection, env : IHostingEnvironment) =
+        let viewsFolderPath = Path.Combine(env.ContentRootPath, "views")
+        services.AddRazorEngine(viewsFolderPath) |> ignore
+```
+
+Inside a razor view add an anti forgery token:
+
+```html
+<form action="/submit-sth">
+   @Html.AntiforgeryToken
+   <input type="submit">
+</form>
+```
+
+Use the `validateAntiforgeryToken` function to validate the form request:
+
+```fsharp
+open Giraffe
+open Giraffe.Razor
+
+let invalidCSRFTokenHandler = RequestErrors.badRequest "The CSRF token was invalid"
+
+let app =
+    POST
+    >=> route "/submit-sth"
+    >=> validateAntiforgeryToken invalidCSRFTokenHandler
+    >=> Successful.OK "All good"
 ```
 
 ## Samples

@@ -1,6 +1,14 @@
 Release Notes
 =============
 
+## 0.1.0-beta-300
+
+Upgraded to latest `Giraffe 0.1.0-beta-5**`, which has a new dependency on `Giraffe.Tasks` from NuGet.
+
+#### New features
+
+- Added `validateAntiforgeryToken` http handler for verifying anti forgery tokens.
+
 ## 0.1.0-beta-200
 
 #### Breaking changes

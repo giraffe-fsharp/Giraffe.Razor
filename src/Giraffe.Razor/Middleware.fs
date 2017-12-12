@@ -15,3 +15,4 @@ module Middleware =
                     options.FileProviders.Add(new PhysicalFileProvider(viewsFolderPath)))
                 .AddMvc()
             |> ignore
+            this.AddAntiforgery()
