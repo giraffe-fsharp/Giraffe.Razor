@@ -13,7 +13,7 @@ artifacts:
     name: Giraffe NuGet packages
 nuget:
   account_feed: false
-  project_feed: false
+  project_feed: true
 deploy:
   provider: NuGet
   api_key:
