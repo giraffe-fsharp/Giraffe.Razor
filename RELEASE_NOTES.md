@@ -1,9 +1,13 @@
 Release Notes
 =============
 
+## 0.1.0-beta-310
+
+Upgraded to latest Giraffe `0.1.0-beta-6**` release.
+
 ## 0.1.0-beta-300
 
-Upgraded to latest `Giraffe 0.1.0-beta-5**`, which has a new dependency on `Giraffe.Tasks` from NuGet.
+Upgraded to latest Giraffe `0.1.0-beta-5**`, which has a new dependency on `Giraffe.Tasks` from NuGet.
 
 #### New features
 

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>Giraffe.Razor</AssemblyName>
-    <Version>0.1.0-beta-300</Version>
+    <Version>0.1.0-beta-310</Version>
     <Description>Razor view engine http handlers for the Giraffe web framework.</Description>
     <Copyright>Copyright 2017 Dustin Moris Gorski</Copyright>
     <NeutralLanguage>en-GB</NeutralLanguage>
@@ -31,7 +31,7 @@
     <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.0.*" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.0.*" />
     <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="2.0.*" />
-    <PackageReference Include="Giraffe" Version="0.1.0-beta-5*" />
+    <PackageReference Include="Giraffe" Version="0.1.0-beta-6*" />
   </ItemGroup>
 
   <ItemGroup>
