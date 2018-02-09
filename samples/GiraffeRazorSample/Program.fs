@@ -12,7 +12,6 @@ open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
 open Giraffe
 open Giraffe.Razor
-open Microsoft.AspNetCore.Http
 
 // ---------------------------------
 // Models

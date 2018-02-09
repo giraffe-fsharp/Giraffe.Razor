@@ -166,7 +166,7 @@ If you add this source to your NuGet CLI or project settings then you can pull u
 
 ## More information
 
-For more information about Giraffe, how to set up a development environment, contribution guidelines and more please visit the [main documentation](https://github.com/giraffe-fsharp/Giraffe#table-of-contents) page.
+For more information about Giraffe, how to set up a development environment, contribution guidelines and more please visit the [main documentation](https://github.com/giraffe-fsharp/Giraffe/blob/master/DOCUMENTATION.md) page.
 
 ## License
 

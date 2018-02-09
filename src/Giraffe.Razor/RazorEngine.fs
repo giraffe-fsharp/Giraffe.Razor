@@ -12,7 +12,8 @@ module RazorEngine =
     open Microsoft.AspNetCore.Mvc.Rendering
     open Microsoft.AspNetCore.Mvc.ViewFeatures
     open Microsoft.AspNetCore.Routing
-    open Giraffe.Tasks
+    open FSharp.Control.Tasks.ContextInsensitive
+    open Giraffe
 
     let renderView (razorViewEngine   : IRazorViewEngine)
                    (tempDataProvider  : ITempDataProvider)
