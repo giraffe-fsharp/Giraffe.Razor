@@ -1,6 +1,10 @@
 Release Notes
 =============
 
+## 1.0.0
+
+Upgraded to latest Giraffe `1.0.0` release.
+
 ## 0.1.0-beta-310
 
 Upgraded to latest Giraffe `0.1.0-beta-6**` release.
