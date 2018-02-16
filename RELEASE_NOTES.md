@@ -1,6 +1,10 @@
 Release Notes
 =============
 
+## 1.1.0
+
+Upgraded to Giraffe `1.1.0`.
+
 ## 1.0.1
 
 Changed copyright notice in NuGet package.
