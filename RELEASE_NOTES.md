@@ -1,6 +1,10 @@
 Release Notes
 =============
 
+## 1.2.0
+
+Added support for view folders (see [#1](https://github.com/giraffe-fsharp/Giraffe.Razor/issues/1), [#3](https://github.com/giraffe-fsharp/Giraffe.Razor/issues/3)).
+
 ## 1.1.0
 
 Upgraded to Giraffe `1.1.0`.
