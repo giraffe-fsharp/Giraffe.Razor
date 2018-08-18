@@ -16,16 +16,16 @@ module RazorEngine =
     open Giraffe
 
     let private extractRouteData (path:string) =
-        
+
         let templatePath = path + "" //Normalize nulls
 
-        //Split path into segments and reverse the orders        
-        let segments = 
+        //Split path into segments and reverse the orders
+        let segments =
             templatePath.Split('/', '\\')
-            |> List.ofSeq 
+            |> List.ofSeq
             |> List.rev
 
-        let routeValues = 
+        let routeValues =
             seq {
                 for i in 1..segments.Length do
                     match i with
@@ -40,7 +40,7 @@ module RazorEngine =
 
         for (key,value) in routeValues do
             routeData.Values.Add(key, value)
-        
+
         routeData
 
     let renderView (razorViewEngine   : IRazorViewEngine)
@@ -50,7 +50,7 @@ module RazorEngine =
                    (model             : 'T) =
         task {
             let routeData = extractRouteData(viewName)
-            let templateName = routeData.Values.["action"].ToString() 
+            let templateName = routeData.Values.["action"].ToString()
 
             let actionContext    = ActionContext(httpContext, routeData, ActionDescriptor())
             let viewEngineResult = razorViewEngine.FindView(actionContext, templateName, true)

@@ -1,6 +1,10 @@
 Release Notes
 =============
 
+## 1.3.0
+
+Upgraded to Giraffe `2.0.0` and the latest ASP.NET Core `2.1.*` NuGet packages.
+
 ## 1.2.0
 
 Added support for view folders (see [#1](https://github.com/giraffe-fsharp/Giraffe.Razor/issues/1), [#3](https://github.com/giraffe-fsharp/Giraffe.Razor/issues/3)).
