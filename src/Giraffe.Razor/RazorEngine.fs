@@ -14,6 +14,7 @@ module RazorEngine =
     open Microsoft.AspNetCore.Routing
     open FSharp.Control.Tasks.V2.ContextInsensitive
     open Giraffe
+  
 
     let private extractRouteData (path:string) =
 
@@ -47,7 +48,7 @@ module RazorEngine =
                    (tempDataProvider  : ITempDataProvider)
                    (httpContext       : HttpContext)
                    (viewName          : string)
-                   (model             : 'T) =
+                   (viewModel         : ViewModel<'T>) =
         task {
             let routeData = extractRouteData(viewName)
             let templateName = routeData.Values.["action"].ToString()
@@ -61,7 +62,13 @@ module RazorEngine =
                 return Error (sprintf "Could not find view with the name '%s'. Looked in %s." templateName locations)
             | true ->
                 let view = viewEngineResult.View
-                let viewDataDict       = ViewDataDictionary<'T>(EmptyModelMetadataProvider(), ModelStateDictionary(), Model = model)
+                let viewDataDict = ViewDataDictionary<'T>(EmptyModelMetadataProvider(), ModelStateDictionary())
+                match viewModel with 
+                | Model model -> 
+                    viewDataDict.Model <- model
+                | ViewDataAndModel (viewData, model) -> 
+                    viewData |> Seq.iter (fun (key, value) -> viewDataDict.Add(key, value))
+                    viewDataDict.Model <- model
                 let tempDataDict       = TempDataDictionary(actionContext.HttpContext, tempDataProvider)
                 let htmlHelperOptions  = HtmlHelperOptions()
                 use output = new StringWriter()
