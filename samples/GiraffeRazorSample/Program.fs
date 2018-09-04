@@ -11,6 +11,7 @@ open Microsoft.AspNetCore.Http.Features
 open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
 open Giraffe
+open FSharp.Control.Tasks.V2.ContextInsensitive
 open Giraffe.Razor
 
 // ---------------------------------

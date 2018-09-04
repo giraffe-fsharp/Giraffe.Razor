@@ -10,6 +10,7 @@ module HttpHandlers =
     open Microsoft.AspNetCore.Mvc.ViewFeatures
     open Microsoft.Extensions.DependencyInjection
     open Microsoft.AspNetCore.Antiforgery
+    open FSharp.Control.Tasks.V2.ContextInsensitive
     open Giraffe
 
     /// Reads a razor view from disk and compiles it with the given model and sets

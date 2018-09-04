@@ -12,7 +12,7 @@ module RazorEngine =
     open Microsoft.AspNetCore.Mvc.Rendering
     open Microsoft.AspNetCore.Mvc.ViewFeatures
     open Microsoft.AspNetCore.Routing
-    open FSharp.Control.Tasks.ContextInsensitive
+    open FSharp.Control.Tasks.V2.ContextInsensitive
     open Giraffe
 
     let private extractRouteData (path:string) =
