@@ -1,10 +1,13 @@
 namespace Giraffe.Razor
 
+open System.Collections.Generic
 [<AutoOpen>]
 module Types =
 
-  type ViewData = (string * obj) seq
+  type ViewData = IDictionary<string,obj>
 
-  type ViewModel<'T> = 
-      | Model of 'T
-      | ViewDataAndModel of ViewData * 'T
+  type ViewModel<'T>(?model: 'T, ?viewData: ViewData) = 
+    let model = defaultArg model Unchecked.defaultof<'T>
+    let viewData = defaultArg viewData (dict Seq.empty)
+    member this.Model = model
+    member this.ViewData = viewData

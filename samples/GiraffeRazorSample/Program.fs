@@ -57,18 +57,19 @@ let largeFileUploadHandler =
         }
 
 let renderPerson = 
-    let modelView = ViewDataAndModel ([("title", box "Mr")], { Name = "Razor" })
+    let model = { Name = "Razor" }
+    let viewData = dict [("title", box "Mr")]
+    let modelView = ViewModel(model, viewData)
     razorHtmlView "Person" modelView
-        
 
 let webApp =
     choose [
         GET >=>
             choose [
                 route  "/"       >=> text "index"
-                route  "/razor"  >=> razorView "text/html" "Hello" (Model ())
+                route  "/razor"  >=> razorView "text/html" "Hello" (ViewModel())
                 route  "/person" >=> renderPerson
-                route  "/upload" >=> razorHtmlView "FileUpload" (Model ())
+                route  "/upload" >=> razorHtmlView "FileUpload" (ViewModel("File upload"))
             ]
         POST >=>
             choose [

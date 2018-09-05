@@ -62,13 +62,9 @@ module RazorEngine =
                 return Error (sprintf "Could not find view with the name '%s'. Looked in %s." templateName locations)
             | true ->
                 let view = viewEngineResult.View
-                let viewDataDict = ViewDataDictionary<'T>(EmptyModelMetadataProvider(), ModelStateDictionary())
-                match viewModel with 
-                | Model model -> 
-                    viewDataDict.Model <- model
-                | ViewDataAndModel (viewData, model) -> 
-                    viewData |> Seq.iter (fun (key, value) -> viewDataDict.Add(key, value))
-                    viewDataDict.Model <- model
+                let viewDataDict = ViewDataDictionary<'T>(EmptyModelMetadataProvider(), ModelStateDictionary())               
+                viewModel.ViewData |> Seq.iter (fun (item) -> viewDataDict.Add(item))
+                viewDataDict.Model <- viewModel.Model
                 let tempDataDict       = TempDataDictionary(actionContext.HttpContext, tempDataProvider)
                 let htmlHelperOptions  = HtmlHelperOptions()
                 use output = new StringWriter()
