@@ -42,7 +42,7 @@ type Startup() =
 
 ### razorView
 
-The `razorView` http handler utilises the official ASP.NET Core MVC Razor view engine to compile a view into a HTML page and sets the body of the `HttpResponse` object. It takes in four input parameters, the content type, the view name, an optional view model and an optional view data dictionary as input parameters.
+The `razorView` http handler utilises the official ASP.NET Core MVC Razor view engine to compile a view into a HTML page and sets the body of the `HttpResponse` object. It requires the content type, the view name, an optional view model and an optional view data dictionary as input parameters.
 
 #### Example:
 
