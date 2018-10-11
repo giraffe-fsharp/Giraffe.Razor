@@ -32,7 +32,8 @@
     <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.1.*" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.1.*" />
     <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="2.1.*" />
-    <PackageReference Include="Giraffe" Version="2.0.*" />
+    <PackageReference Include="TaskBuilder.fs" Version="2.1.*" />
+    <PackageReference Include="Giraffe" Version="3.2.*" />
   </ItemGroup>
 
   <ItemGroup>
