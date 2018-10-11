@@ -21,8 +21,8 @@ Import-module "$PSScriptRoot/.psscripts/build-functions.ps1" -Force
 
 Write-BuildHeader "Starting Giraffe.Razor build script"
 
-$giraffeRazor = ".\src\Giraffe.Razor\Giraffe.Razor.fsproj"
-$sampleApp    = ".\samples\GiraffeRazorSample\GiraffeRazorSample.fsproj"
+$giraffeRazor = "./src/Giraffe.Razor/Giraffe.Razor.fsproj"
+$sampleApp    = "./samples/GiraffeRazorSample/GiraffeRazorSample.fsproj"
 
 $version = Get-ProjectVersion $giraffeRazor
 Update-AppVeyorBuildVersion $version
