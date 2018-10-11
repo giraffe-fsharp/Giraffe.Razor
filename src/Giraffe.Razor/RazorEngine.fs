@@ -4,6 +4,7 @@ module RazorEngine =
 
     open System
     open System.IO
+    open System.Collections.Generic
     open Microsoft.AspNetCore.Http
     open Microsoft.AspNetCore.Mvc
     open Microsoft.AspNetCore.Mvc.Abstractions
@@ -12,14 +13,13 @@ module RazorEngine =
     open Microsoft.AspNetCore.Mvc.Rendering
     open Microsoft.AspNetCore.Mvc.ViewFeatures
     open Microsoft.AspNetCore.Routing
-    open FSharp.Control.Tasks.ContextInsensitive
-    open Giraffe
+    open FSharp.Control.Tasks.V2.ContextInsensitive
 
     let private extractRouteData (path:string) =
+        // Normalize nulls
+        let templatePath = path + ""
 
-        let templatePath = path + "" //Normalize nulls
-
-        //Split path into segments and reverse the orders
+        // Split path into segments and reverse the orders
         let segments =
             templatePath.Split('/', '\\')
             |> List.ofSeq
@@ -35,7 +35,7 @@ module RazorEngine =
                     | x -> yield sprintf "token-%d" (x), segments.[x - 1]
             }
 
-        //Create RouteData Object using Values Created
+        // Create RouteData Object using Values Created
         let routeData = RouteData()
 
         for (key,value) in routeValues do
@@ -47,7 +47,8 @@ module RazorEngine =
                    (tempDataProvider  : ITempDataProvider)
                    (httpContext       : HttpContext)
                    (viewName          : string)
-                   (model             : 'T) =
+                   (model             : 'T option)
+                   (viewData          : IDictionary<string, obj> option) =
         task {
             let routeData = extractRouteData(viewName)
             let templateName = routeData.Values.["action"].ToString()
@@ -60,8 +61,16 @@ module RazorEngine =
                 let locations = String.Join(" ", viewEngineResult.SearchedLocations)
                 return Error (sprintf "Could not find view with the name '%s'. Looked in %s." templateName locations)
             | true ->
-                let view = viewEngineResult.View
-                let viewDataDict       = ViewDataDictionary<'T>(EmptyModelMetadataProvider(), ModelStateDictionary(), Model = model)
+                let view      = viewEngineResult.View
+                let viewModel = defaultArg model Unchecked.defaultof<'T>
+                let viewDataDict =
+                    ViewDataDictionary<'T>(
+                        EmptyModelMetadataProvider(),
+                        ModelStateDictionary(),
+                        Model = viewModel)
+                if (viewData.IsSome) then
+                    viewData.Value
+                    |> Seq.iter (fun x -> viewDataDict.Add x)
                 let tempDataDict       = TempDataDictionary(actionContext.HttpContext, tempDataProvider)
                 let htmlHelperOptions  = HtmlHelperOptions()
                 use output = new StringWriter()

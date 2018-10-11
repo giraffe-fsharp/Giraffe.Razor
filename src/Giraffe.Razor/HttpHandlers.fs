@@ -5,21 +5,27 @@ module HttpHandlers =
 
     open System.Text
     open System.Threading.Tasks
+    open System.Collections.Generic
     open Microsoft.AspNetCore.Http
     open Microsoft.AspNetCore.Mvc.Razor
     open Microsoft.AspNetCore.Mvc.ViewFeatures
     open Microsoft.Extensions.DependencyInjection
     open Microsoft.AspNetCore.Antiforgery
+    open FSharp.Control.Tasks.V2.ContextInsensitive
     open Giraffe
+    open RazorEngine
 
     /// Reads a razor view from disk and compiles it with the given model and sets
     /// the compiled output as the HTTP reponse with the given contentType.
-    let razorView (contentType : string) (viewName : string) (model : 'T) : HttpHandler =
+    let razorView (contentType : string)
+                  (viewName    : string)
+                  (model       : 'T option)
+                  (viewData    : IDictionary<string, obj> option) : HttpHandler =
         fun (next : HttpFunc) (ctx : HttpContext) ->
             task {
                 let engine = ctx.RequestServices.GetService<IRazorViewEngine>()
                 let tempDataProvider = ctx.RequestServices.GetService<ITempDataProvider>()
-                let! result = RazorEngine.renderView engine tempDataProvider ctx viewName model
+                let! result = renderView engine tempDataProvider ctx viewName model viewData
                 match result with
                 | Error msg -> return (failwith msg)
                 | Ok output ->
@@ -29,8 +35,10 @@ module HttpHandlers =
 
     /// Reads a razor view from disk and compiles it with the given model and sets
     /// the compiled output as the HTTP reponse with a Content-Type of text/html.
-    let razorHtmlView (viewName : string) (model : 'T) : HttpHandler =
-        razorView "text/html" viewName model
+    let razorHtmlView (viewName : string)
+                      (model    : 'T option)
+                      (viewData : IDictionary<string, obj> option) : HttpHandler =
+        razorView "text/html; charset=utf-8" viewName model viewData
 
     /// Validates an anti forgery token.
     /// If the token is valid the handler will procceed as normal,

@@ -10,6 +10,7 @@ open Microsoft.AspNetCore.Http
 open Microsoft.AspNetCore.Http.Features
 open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
+open FSharp.Control.Tasks.V2.ContextInsensitive
 open Giraffe
 open Giraffe.Razor
 
@@ -53,14 +54,26 @@ let largeFileUploadHandler =
             return! (form.Files |> displayFileInfos) next ctx
         }
 
+let renderPerson =
+    let model = { Name = "Razor" }
+    let viewData = dict [("Title", box "Mr Fox")]
+    razorHtmlView "Person" (Some model) (Some viewData)
+
+let viewData =
+    dict [
+        "Who", "Foo Bar" :> obj
+        "Foo", 89 :> obj
+        "Bar", true :> obj
+    ]
+
 let webApp =
     choose [
         GET >=>
             choose [
                 route  "/"       >=> text "index"
-                route  "/razor"  >=> razorView "text/html" "Hello" ()
-                route  "/person" >=> razorHtmlView "Person" { Name = "Razor" }
-                route  "/upload" >=> razorHtmlView "FileUpload" ()
+                route  "/razor"  >=> razorView "text/html" "Hello" None (Some viewData)
+                route  "/person" >=> renderPerson
+                route  "/upload" >=> razorHtmlView "FileUpload" (Some "File upload") (Some viewData)
             ]
         POST >=>
             choose [

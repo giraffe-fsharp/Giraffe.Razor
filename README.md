@@ -2,7 +2,7 @@
 
 ![Giraffe](https://raw.githubusercontent.com/giraffe-fsharp/Giraffe/master/giraffe.png)
 
-Razor view engine http handlers for the Giraffe web framework.
+Razor view engine support for the [Giraffe](https://github.com/giraffe-fsharp/Giraffe) web framework.
 
 [![NuGet Info](https://buildstats.info/nuget/Giraffe.Razor?includePreReleases=true)](https://www.nuget.org/packages/Giraffe.Razor/)
 
@@ -26,25 +26,25 @@ Razor view engine http handlers for the Giraffe web framework.
 
 The `Giraffe.Razor` NuGet package adds additional `HttpHandler` functions to render Razor views in Giraffe.
 
-### razorView
-
-`razorView` uses the official ASP.NET Core MVC Razor view engine to compile a page and set the body of the `HttpResponse`. This http handler triggers a response to the client and other http handlers will not be able to modify the HTTP headers afterwards any more.
-
-The `razorView` handler requires the view name, an object model and the contentType of the response to be passed in. It also requires to be enabled through the `AddRazorEngine` function during start-up.
-
-#### Example:
-
-Add the razor engine service during start-up:
+In order to use the Razor functionality in an (ASP.NET Core) Giraffe application you'll need to register additional dependencies through the `AddRazorEngine` extension method during application start-up:
 
 ```fsharp
 open Giraffe
 open Giraffe.Razor
 
 type Startup() =
-    member __.ConfigureServices (services : IServiceCollection, env : IHostingEnvironment) =
-        let viewsFolderPath = Path.Combine(env.ContentRootPath, "views")
-        services.AddRazorEngine(viewsFolderPath) |> ignore
+    member __.ConfigureServices (svc : IServiceCollection,
+                                 env : IHostingEnvironment) =
+        let viewsFolderPath =
+            Path.Combine(env.ContentRootPath, "Views")
+        svc.AddRazorEngine viewsFolderPath |> ignore
 ```
+
+### razorView
+
+The `razorView` http handler utilises the official ASP.NET Core MVC Razor view engine to compile a view into a HTML page and sets the body of the `HttpResponse` object. It takes in four input parameters, the content type, the view name, an optional view model and an optional view data dictionary as input parameters.
+
+#### Example:
 
 Use the razorView function:
 
@@ -63,27 +63,15 @@ let model = { WelcomeText = "Hello, World" }
 let app =
     choose [
         // Assuming there is a view called "Index.cshtml"
-        route  "/" >=> razorView "text/html" "Index" model
+        route  "/" >=> razorView "text/html" "Index" (Some model) None
     ]
 ```
 
 ### razorHtmlView
 
-`razorHtmlView` is the same as `razorView` except that it automatically sets the response as `text/html`.
+The `razorHtmlView` http handler is the same as the `razorView` handler except that it automatically sets the response's content type to `text/html; charset=utf-8`.
 
 #### Example:
-
-Add the razor engine service during start-up:
-
-```fsharp
-open Giraffe
-open Giraffe.Razor
-
-type Startup() =
-    member __.ConfigureServices (services : IServiceCollection, env : IHostingEnvironment) =
-        let viewsFolderPath = Path.Combine(env.ContentRootPath, "views")
-        services.AddRazorEngine(viewsFolderPath) |> ignore
-```
 
 Use the razorView function:
 
@@ -99,30 +87,25 @@ type TestModel =
 
 let model = { WelcomeText = "Hello, World" }
 
+let viewData =
+    dict [
+        "Title", "Hello World" :> obj
+        "Foo", 89 :> obj
+        "Bar", true :> obj
+    ]
+
 let app =
     choose [
         // Assuming there is a view called "Index.cshtml"
-        route  "/" >=> razorHtmlView "Index" model
+        route  "/" >=> razorHtmlView "Index" (Some model) (Some viewData)
     ]
 ```
 
 ### validateAntiforgeryToken
 
-`validateAntiforgeryToken` allows one to validate an anti forgery token created by the `Microsoft.AspNetCore.Antiforgery` API.
+The `validateAntiforgeryToken` http handler allows one to validate an anti forgery token created by the `Microsoft.AspNetCore.Antiforgery` API.
 
 #### Example:
-
-Add the razor engine service during start-up:
-
-```fsharp
-open Giraffe
-open Giraffe.Razor
-
-type Startup() =
-    member __.ConfigureServices (services : IServiceCollection, env : IHostingEnvironment) =
-        let viewsFolderPath = Path.Combine(env.ContentRootPath, "views")
-        services.AddRazorEngine(viewsFolderPath) |> ignore
-```
 
 Inside a razor view add an anti forgery token:
 
