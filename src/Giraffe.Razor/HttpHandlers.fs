@@ -10,16 +10,20 @@ module HttpHandlers =
     open Microsoft.AspNetCore.Mvc.ViewFeatures
     open Microsoft.Extensions.DependencyInjection
     open Microsoft.AspNetCore.Antiforgery
+    open Microsoft.AspNetCore.Mvc.ModelBinding
+    open FSharp.Control.Tasks.V2.ContextInsensitive
     open Giraffe
+    open RazorEngine
+
 
     /// Reads a razor view from disk and compiles it with the given model and sets
     /// the compiled output as the HTTP reponse with the given contentType.
-    let razorView (contentType : string) (viewName : string) (model : 'T) : HttpHandler =
+    let razorView (contentType : string) (viewName : string) (viewModel : ViewModel<'T>) : HttpHandler =
         fun (next : HttpFunc) (ctx : HttpContext) ->
             task {
                 let engine = ctx.RequestServices.GetService<IRazorViewEngine>()
                 let tempDataProvider = ctx.RequestServices.GetService<ITempDataProvider>()
-                let! result = RazorEngine.renderView engine tempDataProvider ctx viewName model
+                let! result = renderView engine tempDataProvider ctx viewName viewModel
                 match result with
                 | Error msg -> return (failwith msg)
                 | Ok output ->
@@ -29,7 +33,7 @@ module HttpHandlers =
 
     /// Reads a razor view from disk and compiles it with the given model and sets
     /// the compiled output as the HTTP reponse with a Content-Type of text/html.
-    let razorHtmlView (viewName : string) (model : 'T) : HttpHandler =
+    let razorHtmlView (viewName : string) (model : ViewModel<'T>) : HttpHandler =
         razorView "text/html" viewName model
 
     /// Validates an anti forgery token.
