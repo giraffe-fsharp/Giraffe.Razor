@@ -1,6 +1,18 @@
 Release Notes
 =============
 
+## 2.0.0
+
+#### New features/Breaking changes
+
+- Added support for view data in the `razorView` and `razorHtmlView` http handlers
+
+#### Improvements
+
+- Upgraded to Giraffe 3.2.*
+- Upgraded to latest TaskBuilder.fs
+- Added `charset=utf-8` to the `Content-Type` header when calling `razorHtmlView`
+
 ## 1.3.0
 
 Upgraded to Giraffe `2.0.0` and the latest ASP.NET Core `2.1.*` NuGet packages.
