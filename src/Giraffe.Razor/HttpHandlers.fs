@@ -25,7 +25,7 @@ module HttpHandlers =
             task {
                 let engine = ctx.RequestServices.GetService<IRazorViewEngine>()
                 let tempDataProvider = ctx.RequestServices.GetService<ITempDataProvider>()
-                let! result = renderView engine tempDataProvider ctx viewName model viewData
+                let! result = renderView engine tempDataProvider ctx viewName model viewData None
                 match result with
                 | Error msg -> return (failwith msg)
                 | Ok output ->
