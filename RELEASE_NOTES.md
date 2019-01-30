@@ -1,6 +1,12 @@
 Release Notes
 =============
 
+## 3.0.0
+
+#### New features/Breaking changes
+
+- Added a new parameter to the `RazorEngine.renderView` function to support a `ModelStateDictionary`.
+
 ## 2.0.0
 
 #### New features/Breaking changes
