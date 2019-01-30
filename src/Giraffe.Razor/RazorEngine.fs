@@ -48,7 +48,8 @@ module RazorEngine =
                    (httpContext       : HttpContext)
                    (viewName          : string)
                    (model             : 'T option)
-                   (viewData          : IDictionary<string, obj> option) =
+                   (viewData          : IDictionary<string, obj> option)
+                   (modelState        : ModelStateDictionary option) =
         task {
             let routeData = extractRouteData(viewName)
             let templateName = routeData.Values.["action"].ToString()
@@ -63,10 +64,11 @@ module RazorEngine =
             | true ->
                 let view      = viewEngineResult.View
                 let viewModel = defaultArg model Unchecked.defaultof<'T>
+                let viewModelState = defaultArg modelState (ModelStateDictionary())
                 let viewDataDict =
                     ViewDataDictionary<'T>(
                         EmptyModelMetadataProvider(),
-                        ModelStateDictionary(),
+                        viewModelState,
                         Model = viewModel)
                 if (viewData.IsSome) then
                     viewData.Value
