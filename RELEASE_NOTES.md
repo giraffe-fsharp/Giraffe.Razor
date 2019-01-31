@@ -5,7 +5,7 @@ Release Notes
 
 #### New features/Breaking changes
 
-- Added a new parameter to the `RazorEngine.renderView` function to support a `ModelStateDictionary`.
+- Added a new parameter to the `razorView`, `razorHtmlView`, and `RazorEngine.renderView` functions to support a `ModelStateDictionary`.
 
 ## 2.0.0
 

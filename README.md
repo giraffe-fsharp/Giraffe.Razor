@@ -42,7 +42,7 @@ type Startup() =
 
 ### razorView
 
-The `razorView` http handler utilises the official ASP.NET Core MVC Razor view engine to compile a view into a HTML page and sets the body of the `HttpResponse` object. It requires the content type, the view name, an optional view model and an optional view data dictionary as input parameters.
+The `razorView` http handler utilises the official ASP.NET Core MVC Razor view engine to compile a view into a HTML page and sets the body of the `HttpResponse` object. It requires the content type, the view name, an optional view model, an optional view data dictionary, and an optional model state dictionary as input parameters.
 
 #### Example:
 
@@ -63,7 +63,7 @@ let model = { WelcomeText = "Hello, World" }
 let app =
     choose [
         // Assuming there is a view called "Index.cshtml"
-        route  "/" >=> razorView "text/html" "Index" (Some model) None
+        route  "/" >=> razorView "text/html" "Index" (Some model) None None
     ]
 ```
 
@@ -78,6 +78,7 @@ Use the razorView function:
 ```fsharp
 open Giraffe
 open Giraffe.Razor
+open Microsoft.AspNetCore.Mvc.ModelBinding
 
 [<CLIMutable>]
 type TestModel =
@@ -94,10 +95,12 @@ let viewData =
         "Bar", true :> obj
     ]
 
+let modelState = ModelStateDictionary()
+
 let app =
     choose [
         // Assuming there is a view called "Index.cshtml"
-        route  "/" >=> razorHtmlView "Index" (Some model) (Some viewData)
+        route  "/" >=> razorHtmlView "Index" (Some model) (Some viewData) (Some modelState)
     ]
 ```
 
