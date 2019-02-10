@@ -1,0 +1,38 @@
+@model GiraffeRazorSample.CreatePerson
+@{
+    Layout = "_Layout";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div>
+    <h3>Create Person</h3>
+    <form method="post" role="form" asp-antiforgery="true">
+        <div asp-validation-summary="All" class="danger-text"></div>
+        <p>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" />
+            <span asp-validation-for="Name" class="danger-text"></span>
+        </p>
+        <p>
+            <!-- 
+                Intentionally not using asp-for with a bool field
+                HTML spec says not to send unchecked checkboxes on POST: See https://stackoverflow.com/a/11424089
+                asp-for compensates for this by creating a second, hidden input for the bool that's always false
+                Both inputs are sent to the server in the body when the input is checked
+                So on a POST with unchecked, body contains CheckMe: false
+                On a POST with checked, body contains CheckMe: true and CheckMe: false
+                With CheckMe in the body twice, model binding consistently evaluates to false
+             -->
+            <!-- <input asp-for="CheckMe" /> -->
+            <input type="checkbox"
+                   id="CheckMe"
+                   name="CheckMe"
+                   data-val="true"
+                   value="true"
+                   @(Model.CheckMe ? "checked" : "") />
+            <label asp-for="CheckMe">Required checkbox</label>
+            <span asp-validation-for="CheckMe" class="danger-text"></span>
+        </p>
+        <button type="submit">Submit</button>
+    </form>
+</div>
