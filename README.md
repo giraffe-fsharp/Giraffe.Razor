@@ -40,6 +40,8 @@ type Startup() =
         svc.AddRazorEngine viewsFolderPath |> ignore
 ```
 
+If your all of your Razor views are kept in a Razor Class Library, you do not need to specify a views folder path.  In this case, there is an overload of AddRazorEngine which takes no parameters.
+
 ### razorView
 
 The `razorView` http handler utilises the official ASP.NET Core MVC Razor view engine to compile a view into a HTML page and sets the body of the `HttpResponse` object. It requires the content type, the view name, an optional view model, an optional view data dictionary, and an optional model state dictionary as input parameters.
