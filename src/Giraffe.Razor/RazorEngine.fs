@@ -44,7 +44,7 @@ module RazorEngine =
         routeData
 
     let renderView (razorViewEngine   : IRazorViewEngine)
-                   (tempDataProvider  : ITempDataProvider)
+                   (tempDataDict      : ITempDataDictionary)
                    (httpContext       : HttpContext)
                    (viewName          : string)
                    (model             : 'T option)
@@ -73,10 +73,10 @@ module RazorEngine =
                 if (viewData.IsSome) then
                     viewData.Value
                     |> Seq.iter (fun x -> viewDataDict.Add x)
-                let tempDataDict       = TempDataDictionary(actionContext.HttpContext, tempDataProvider)
                 let htmlHelperOptions  = HtmlHelperOptions()
                 use output = new StringWriter()
                 let viewContext = ViewContext(actionContext, view, viewDataDict, tempDataDict, output, htmlHelperOptions)
                 do! view.RenderAsync(viewContext)
+                tempDataDict.Save()
                 return Ok (output.ToString())
         }
