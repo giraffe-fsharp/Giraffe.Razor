@@ -16,3 +16,6 @@ module Middleware =
                 .AddMvc()
             |> ignore
             this.AddAntiforgery()
+        member this.AddRazorEngine() =
+            this.AddMvc() |> ignore
+            this.AddAntiforgery()
