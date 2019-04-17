@@ -1,5 +1,4 @@
 namespace Giraffe.Razor
-open Microsoft.AspNetCore.Mvc.ViewFeatures
 
 [<AutoOpen>]
 module HttpHandlers =

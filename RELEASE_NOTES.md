@@ -1,6 +1,16 @@
 Release Notes
 =============
 
+## 4.0.0
+
+#### Breaking changes & Bug fixes
+
+- Fixed a bug around the `TempData` implementation to ensure that all previously stored data in the `TempData` dictionary is accessible as well as newly made changes are persisted going forward.
+
+#### New features
+
+- Added an additional overload of `AddRazorEngine` which does not take any arguments in order to support Razor views from a class library.
+
 ## 3.0.0
 
 #### New features/Breaking changes

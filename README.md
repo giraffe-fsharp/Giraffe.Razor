@@ -40,7 +40,17 @@ type Startup() =
         svc.AddRazorEngine viewsFolderPath |> ignore
 ```
 
-If your all of your Razor views are kept in a Razor Class Library, you do not need to specify a views folder path.  In this case, there is an overload of AddRazorEngine which takes no parameters.
+If your all of your Razor views are kept in a Razor class library, then you do not need to specify a views folder path when registering the Razor dependencies. In this case there is an overload of `AddRazorEngine` which takes no arguments:
+
+```fsharp
+open Giraffe
+open Giraffe.Razor
+
+type Startup() =
+    member __.ConfigureServices (svc : IServiceCollection,
+                                 env : IHostingEnvironment) =
+        svc.AddRazorEngine() |> ignore
+```
 
 ### razorView
 
