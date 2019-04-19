@@ -9,7 +9,7 @@ Release Notes
 
 #### New features
 
-- Added an additional overload of `AddRazorEngine` which does not take any arguments in order to support Razor views from a class library.
+- Added an additional overload of `AddRazorEngine` which does not take any arguments, which supports Razor views from a class library.
 
 ## 3.0.0
 

@@ -6,10 +6,10 @@ Razor view engine support for the [Giraffe](https://github.com/giraffe-fsharp/Gi
 
 [![NuGet Info](https://buildstats.info/nuget/Giraffe.Razor?includePreReleases=true)](https://www.nuget.org/packages/Giraffe.Razor/)
 
-| Windows | Linux |
-| :------ | :---- |
-| [![Windows Build status](https://ci.appveyor.com/api/projects/status/914030ec0lrc0vti/branch/develop?svg=true)](https://ci.appveyor.com/project/dustinmoris/giraffe-razor/branch/develop) | [![Linux Build status](https://travis-ci.org/giraffe-fsharp/Giraffe.Razor.svg?branch=develop)](https://travis-ci.org/giraffe-fsharp/Giraffe.Razor/builds?branch=develop) |
-| [![Windows Build history](https://buildstats.info/appveyor/chart/dustinmoris/giraffe-razor?branch=develop&includeBuildsFromPullRequest=false)](https://ci.appveyor.com/project/dustinmoris/giraffe-razor/history?branch=develop) | [![Linux Build history](https://buildstats.info/travisci/chart/giraffe-fsharp/Giraffe.Razor?branch=develop&includeBuildsFromPullRequest=false)](https://travis-ci.org/giraffe-fsharp/Giraffe.Razor/builds?branch=develop) |
+| Windows and Linux Builds |
+| :------ |
+| [![Windows Build status](https://ci.appveyor.com/api/projects/status/914030ec0lrc0vti/branch/develop?svg=true)](https://ci.appveyor.com/project/dustinmoris/giraffe-razor/branch/develop) |
+| [![Windows Build history](https://buildstats.info/appveyor/chart/dustinmoris/giraffe-razor?branch=develop&includeBuildsFromPullRequest=false&buildCount=40)](https://ci.appveyor.com/project/dustinmoris/giraffe-razor/history?branch=develop) |
 
 ## Table of contents
 
