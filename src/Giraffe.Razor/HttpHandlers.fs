@@ -26,8 +26,8 @@ module HttpHandlers =
         fun (next : HttpFunc) (ctx : HttpContext) ->
             task {
                 let engine = ctx.RequestServices.GetService<IRazorViewEngine>()
-                let tempDataProvider = ctx.RequestServices.GetService<ITempDataProvider>()
-                let! result = renderView engine tempDataProvider ctx viewName model viewData modelState
+                let tempDataDict = ctx.RequestServices.GetService<ITempDataDictionaryFactory>().GetTempData ctx
+                let! result = renderView engine tempDataDict ctx viewName model viewData modelState
                 match result with
                 | Error msg -> return (failwith msg)
                 | Ok output ->
