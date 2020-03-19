@@ -44,6 +44,7 @@ module RazorEngine =
         routeData
 
     let renderView (razorViewEngine   : IRazorViewEngine)
+                   (modelMetadataProvider: IModelMetadataProvider)
                    (tempDataDict      : ITempDataDictionary)
                    (httpContext       : HttpContext)
                    (viewName          : string)
@@ -67,7 +68,7 @@ module RazorEngine =
                 let viewModelState = defaultArg modelState (ModelStateDictionary())
                 let viewDataDict =
                     ViewDataDictionary<'T>(
-                        EmptyModelMetadataProvider(),
+                        modelMetadataProvider,
                         viewModelState,
                         Model = viewModel)
                 if (viewData.IsSome) then
