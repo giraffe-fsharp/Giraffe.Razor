@@ -25,9 +25,10 @@ module HttpHandlers =
                   (modelState  : ModelStateDictionary option) : HttpHandler =
         fun (next : HttpFunc) (ctx : HttpContext) ->
             task {
+                let metadataProvider = ctx.RequestServices.GetService<IModelMetadataProvider>()
                 let engine = ctx.RequestServices.GetService<IRazorViewEngine>()
                 let tempDataDict = ctx.RequestServices.GetService<ITempDataDictionaryFactory>().GetTempData ctx
-                let! result = renderView engine tempDataDict ctx viewName model viewData modelState
+                let! result = renderView engine metadataProvider tempDataDict ctx viewName model viewData modelState
                 match result with
                 | Error msg -> return (failwith msg)
                 | Ok output ->
