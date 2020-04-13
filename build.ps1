@@ -7,8 +7,7 @@ param
     [switch] $Release,
     [switch] $ExcludeSamples,
     [switch] $Pack,
-    [switch] $Run,
-    [switch] $OnlyNetStandard
+    [switch] $Run
 )
 
 # ----------------------------------------------
@@ -34,7 +33,6 @@ if (Test-IsAppVeyorBuildTriggeredByGitTag)
 }
 
 Write-DotnetCoreVersions
-
 Remove-OldBuildArtifacts
 
 $configuration = if ($Release.IsPresent) { "Release" } else { "Debug" }
