@@ -3,6 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{03CCBA43-B6F5-4FA7-8C18-432BB07225FC}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe.Razor", "src\Giraffe.Razor\Giraffe.Razor.fsproj", "{9B52367B-CC80-452E-9062-7583995BFAC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{E067A6B8-538E-4362-83C2-9ECBC486AC31}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "GiraffeRazorSample", "samples\GiraffeRazorSample\GiraffeRazorSample.fsproj", "{14818084-9969-4F42-8A66-394FC6670B50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_root", "_root", "{73E09F74-F64D-4C42-92FC-19731C0C5553}"
+ProjectSection(SolutionItems) = preProject
+	.gitignore = .gitignore
+	.gitattributes = .gitattributes
+	LICENSE = LICENSE
+	NuGet.config = NuGet.config
+	README.md = README.md
+	RELEASE_NOTES.md = RELEASE_NOTES.md
+	giraffe-64x64.png = giraffe-64x64.png
+	CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,5 +34,35 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9B52367B-CC80-452E-9062-7583995BFAC0} = {03CCBA43-B6F5-4FA7-8C18-432BB07225FC}
+		{14818084-9969-4F42-8A66-394FC6670B50} = {E067A6B8-538E-4362-83C2-9ECBC486AC31}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B52367B-CC80-452E-9062-7583995BFAC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B52367B-CC80-452E-9062-7583995BFAC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B52367B-CC80-452E-9062-7583995BFAC0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9B52367B-CC80-452E-9062-7583995BFAC0}.Debug|x64.Build.0 = Debug|Any CPU
+		{9B52367B-CC80-452E-9062-7583995BFAC0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9B52367B-CC80-452E-9062-7583995BFAC0}.Debug|x86.Build.0 = Debug|Any CPU
+		{9B52367B-CC80-452E-9062-7583995BFAC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B52367B-CC80-452E-9062-7583995BFAC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B52367B-CC80-452E-9062-7583995BFAC0}.Release|x64.ActiveCfg = Release|Any CPU
+		{9B52367B-CC80-452E-9062-7583995BFAC0}.Release|x64.Build.0 = Release|Any CPU
+		{9B52367B-CC80-452E-9062-7583995BFAC0}.Release|x86.ActiveCfg = Release|Any CPU
+		{9B52367B-CC80-452E-9062-7583995BFAC0}.Release|x86.Build.0 = Release|Any CPU
+		{14818084-9969-4F42-8A66-394FC6670B50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14818084-9969-4F42-8A66-394FC6670B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14818084-9969-4F42-8A66-394FC6670B50}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{14818084-9969-4F42-8A66-394FC6670B50}.Debug|x64.Build.0 = Debug|Any CPU
+		{14818084-9969-4F42-8A66-394FC6670B50}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{14818084-9969-4F42-8A66-394FC6670B50}.Debug|x86.Build.0 = Debug|Any CPU
+		{14818084-9969-4F42-8A66-394FC6670B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14818084-9969-4F42-8A66-394FC6670B50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14818084-9969-4F42-8A66-394FC6670B50}.Release|x64.ActiveCfg = Release|Any CPU
+		{14818084-9969-4F42-8A66-394FC6670B50}.Release|x64.Build.0 = Release|Any CPU
+		{14818084-9969-4F42-8A66-394FC6670B50}.Release|x86.ActiveCfg = Release|Any CPU
+		{14818084-9969-4F42-8A66-394FC6670B50}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

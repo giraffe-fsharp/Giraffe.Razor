@@ -2,9 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <DebugType>portable</DebugType>
     <AssemblyName>GiraffeRazorSample</AssemblyName>
-    <OutputType>Exe</OutputType>
     <PackageId>GiraffeRazorSample</PackageId>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
     <RunWorkingDirectory>$(MSBuildThisFileDirectory)</RunWorkingDirectory>
