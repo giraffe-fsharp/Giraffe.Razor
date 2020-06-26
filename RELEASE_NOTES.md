@@ -1,6 +1,11 @@
 Release Notes
 =============
 
+## 5.0.0
+
+- Dropped support for all .NET framework monikers except .NET Core 3.1 (in preparation for the .NET 5 release)
+- Added support for `IModelMetadataProvider`
+
 ## 4.0.0
 
 #### Breaking changes & Bug fixes
