@@ -1,6 +1,6 @@
-# Giraffe.Razor
-
 ![Giraffe](https://raw.githubusercontent.com/giraffe-fsharp/Giraffe/master/giraffe.png)
+
+# Giraffe.Razor
 
 Razor view engine support for the [Giraffe](https://github.com/giraffe-fsharp/Giraffe) web framework.
 
