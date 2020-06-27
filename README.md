@@ -6,11 +6,11 @@ Razor view engine support for the [Giraffe](https://github.com/giraffe-fsharp/Gi
 
 [![NuGet Info](https://buildstats.info/nuget/Giraffe.Razor?includePreReleases=true)](https://www.nuget.org/packages/Giraffe.Razor/)
 
-### Windows and Linux Builds
+### Linux, macOS and Windows Build Status
 
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/914030ec0lrc0vti/branch/develop?svg=true)](https://ci.appveyor.com/project/dustinmoris/giraffe-razor/branch/develop)
+![.NET Core](https://github.com/giraffe-fsharp/Giraffe.Razor/workflows/.NET%20Core/badge.svg?branch=develop)
 
-[![Windows Build history](https://buildstats.info/appveyor/chart/dustinmoris/giraffe-razor?branch=develop&includeBuildsFromPullRequest=false&buildCount=40)](https://ci.appveyor.com/project/dustinmoris/giraffe-razor/history?branch=develop)
+[![Build history](https://buildstats.info/github/chart/giraffe-fsharp/Giraffe.Razor?branch=develop&includeBuildsFromPullRequest=false)](https://github.com/giraffe-fsharp/Giraffe.Razor/actions?query=branch%3Adevelop++)
 
 ## Table of contents
 
@@ -153,15 +153,13 @@ Please find a fully functioning sample application under [./samples/GiraffeRazor
 
 ## Nightly builds and NuGet feed
 
-All official Giraffe packages are published to the official and public NuGet feed.
+All official release packages are published to the official and public NuGet feed.
 
-Unofficial builds (such as pre-release builds from the `develop` branch and pull requests) produce unofficial pre-release NuGet packages which can be pulled from the project's public NuGet feed on AppVeyor:
+Nightly builds (builds from the `develop` branch) produce unofficial pre-release packages which can be pulled from the [project's NuGet feed on GitHub](https://github.com/orgs/giraffe-fsharp/packages).
 
-```
-https://ci.appveyor.com/nuget/giraffe-razor
-```
+These packages are being tagged with the Workflow's run number as the package version.
 
-If you add this source to your NuGet CLI or project settings then you can pull unofficial NuGet packages for quick feature testing or urgent hot fixes.
+All other builds, such as builds triggered by pull requests produce a NuGet package which can be downloaded as an artifact from the individual GitHub action.
 
 ## More information
 
