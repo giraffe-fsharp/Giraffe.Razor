@@ -2,14 +2,13 @@
   <PropertyGroup>
     <!-- General -->
     <AssemblyName>Giraffe.Razor</AssemblyName>
-    <Version>4.0.0</Version>
     <Description>Razor view engine support for the Giraffe web framework.</Description>
-    <Copyright>Copyright 2018 Dustin Moris Gorski</Copyright>
+    <Copyright>Copyright 2020 Dustin Moris Gorski</Copyright>
     <Authors>Dustin Moris Gorski and contributors</Authors>
     <NeutralLanguage>en-GB</NeutralLanguage>
 
     <!-- Build settings -->
-    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <DebugType>portable</DebugType>
     <OutputType>Library</OutputType>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -21,9 +20,9 @@
     <PackageId>Giraffe.Razor</PackageId>
     <PackageTags>Giraffe;Razor;ASP.NET Core;Lambda;FSharp;Functional;Http;Web;Framework;Micro;Service</PackageTags>
     <PackageReleaseNotes>https://raw.githubusercontent.com/giraffe-fsharp/Giraffe.Razor/master/RELEASE_NOTES.md</PackageReleaseNotes>
-    <PackageIconUrl>https://raw.githubusercontent.com/giraffe-fsharp/Giraffe/master/giraffe-64x64.png</PackageIconUrl>
+    <PackageIcon>giraffe-64x64.png</PackageIcon>
     <PackageProjectUrl>https://github.com/giraffe-fsharp/Giraffe.Razor</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/giraffe-fsharp/Giraffe.Razor/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/giraffe-fsharp/Giraffe.Razor</RepositoryUrl>
@@ -36,13 +35,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.*" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.*" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.2.*" />
-    <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="2.2.*" />
-    <PackageReference Include="TaskBuilder.fs" Version="2.1.*" />
-    <PackageReference Include="Giraffe" Version="3.6.*" />
+    <None Include="../../giraffe-64x64.png">
+      <Pack>true</Pack>
+      <PackagePath>$(PackageIconUrl)</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Giraffe" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>

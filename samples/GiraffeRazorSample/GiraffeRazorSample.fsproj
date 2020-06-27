@@ -1,18 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <DebugType>portable</DebugType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>GiraffeRazorSample</AssemblyName>
-    <OutputType>Exe</OutputType>
     <PackageId>GiraffeRazorSample</PackageId>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
     <RunWorkingDirectory>$(MSBuildThisFileDirectory)</RunWorkingDirectory>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Giraffe.Razor\Giraffe.Razor.fsproj" />

@@ -37,7 +37,7 @@ type CreatePerson =
 // ---------------------------------
 
 let antiforgeryTokenHandler =
-    text "Bad antiforgery token" 
+    text "Bad antiforgery token"
     |> RequestErrors.badRequest
     |> validateAntiforgeryToken
 
@@ -146,7 +146,8 @@ let configureApp (app : IApplicationBuilder) =
 
 let configureServices (services : IServiceCollection) =
     let sp  = services.BuildServiceProvider()
-    let env = sp.GetService<IHostingEnvironment>()
+    let env = sp.GetService<IWebHostEnvironment>()
+    services.AddGiraffe() |> ignore
     Path.Combine(env.ContentRootPath, "Views")
     |> services.AddRazorEngine
     |> ignore
