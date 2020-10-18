@@ -8,7 +8,7 @@
     <NeutralLanguage>en-GB</NeutralLanguage>
 
     <!-- Build settings -->
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <DebugType>portable</DebugType>
     <OutputType>Library</OutputType>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -42,8 +42,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Giraffe" Version="4.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.0" />
+    <PackageReference Include="Giraffe" Version="5.0.0-alpha-003" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.0-rc.2.20475.17" />
   </ItemGroup>
 
   <ItemGroup>
