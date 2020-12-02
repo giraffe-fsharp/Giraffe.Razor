@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-## 5.1.0-rc-3
+## 5.1.0-rc-1
 
 - Target .NET 5
 
