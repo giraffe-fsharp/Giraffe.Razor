@@ -15,7 +15,7 @@ module RazorEngine =
     open Microsoft.AspNetCore.Routing
     open FSharp.Control.Tasks.V2.ContextInsensitive
 
-    let private extractRouteData (path:string) =
+    let private extractRouteData (path : string) =
         // Normalize nulls
         let templatePath = path + ""
 
@@ -43,14 +43,14 @@ module RazorEngine =
 
         routeData
 
-    let renderView (razorViewEngine   : IRazorViewEngine)
-                   (modelMetadataProvider: IModelMetadataProvider)
-                   (tempDataDict      : ITempDataDictionary)
-                   (httpContext       : HttpContext)
-                   (viewName          : string)
-                   (model             : 'T option)
-                   (viewData          : IDictionary<string, obj> option)
-                   (modelState        : ModelStateDictionary option) =
+    let renderView (razorViewEngine       : IRazorViewEngine)
+                   (modelMetadataProvider : IModelMetadataProvider)
+                   (tempDataDict          : ITempDataDictionary)
+                   (httpContext           : HttpContext)
+                   (viewName              : string)
+                   (model                 : 'T option)
+                   (viewData              : IDictionary<string, obj> option)
+                   (modelState            : ModelStateDictionary option) =
         task {
             let routeData = extractRouteData(viewName)
             let templateName = routeData.Values.["action"].ToString()

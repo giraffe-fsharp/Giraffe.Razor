@@ -9,7 +9,7 @@ module Middleware =
 
     type IServiceCollection with
 
-        member this.AddRazorEngine(viewsFolderPath: string, persistFileProviders: bool) =
+        member this.AddRazorEngine(viewsFolderPath : string, persistFileProviders : bool) =
             this.Configure<MvcRazorRuntimeCompilationOptions>(fun (options: MvcRazorRuntimeCompilationOptions) ->
                 if not persistFileProviders then
                     options.FileProviders.Clear()
@@ -19,7 +19,7 @@ module Middleware =
             |> ignore
             this.AddAntiforgery()
 
-        member this.AddRazorEngine(viewsFolderPath: string) =
+        member this.AddRazorEngine(viewsFolderPath : string) =
             this.AddRazorEngine(viewsFolderPath, false)
 
         member this.AddRazorEngine() =
