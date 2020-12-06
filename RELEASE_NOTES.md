@@ -1,6 +1,11 @@
 Release Notes
 =============
 
+## 5.1.0-rc-1
+
+- Upgraded to .NET 5
+- Added an overload to the `AddRazorEngine` extension method to set if existing file providers should be kept or cleared via the `persistFileProviders` flag.
+
 ## 5.0.0
 
 - Dropped support for all .NET framework monikers except .NET Core 3.1 (in preparation for the .NET 5 release)

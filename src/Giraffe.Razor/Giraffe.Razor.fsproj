@@ -7,8 +7,11 @@
     <Authors>Dustin Moris Gorski and contributors</Authors>
     <NeutralLanguage>en-GB</NeutralLanguage>
 
+    <!-- Tell NuGet to STFU -->
+    <NoWarn>$(NoWarn);NU5104</NoWarn>
+
     <!-- Build settings -->
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <DebugType>portable</DebugType>
     <OutputType>Library</OutputType>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -31,7 +34,7 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <NoWarn>FS2003</NoWarn>
+    <NoWarn>$(NoWarn);FS2003</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -42,8 +45,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Giraffe" Version="4.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.0" />
+    <PackageReference Include="Giraffe" Version="5.0.0-rc-3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
