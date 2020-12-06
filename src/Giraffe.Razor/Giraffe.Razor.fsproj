@@ -2,6 +2,7 @@
   <PropertyGroup>
     <!-- General -->
     <AssemblyName>Giraffe.Razor</AssemblyName>
+    <Version>5.1.0-rc-1</Version>
     <Description>Razor view engine support for the Giraffe web framework.</Description>
     <Copyright>Copyright 2020 Dustin Moris Gorski</Copyright>
     <Authors>Dustin Moris Gorski and contributors</Authors>
