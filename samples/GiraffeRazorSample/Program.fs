@@ -11,7 +11,7 @@ open Microsoft.AspNetCore.Http.Features
 open Microsoft.AspNetCore.Mvc.ModelBinding
 open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
-open FSharp.Control.Tasks.V2.ContextInsensitive
+open FSharp.Control.Tasks.Builders
 open Giraffe
 open Giraffe.Razor
 
