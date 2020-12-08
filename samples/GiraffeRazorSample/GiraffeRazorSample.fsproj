@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ply" Version="0.1.*" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Watch Include="**\*.cshtml" Exclude="bin\**\*" />
   </ItemGroup>
 

@@ -13,7 +13,7 @@ module RazorEngine =
     open Microsoft.AspNetCore.Mvc.Rendering
     open Microsoft.AspNetCore.Mvc.ViewFeatures
     open Microsoft.AspNetCore.Routing
-    open FSharp.Control.Tasks.V2.ContextInsensitive
+    open FSharp.Control.Tasks.Builders
 
     let private extractRouteData (path : string) =
         // Normalize nulls
