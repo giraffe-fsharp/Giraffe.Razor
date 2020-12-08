@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ply" Version="0.1.*" />
+    <PackageReference Include="Ply" Version="0.3.*" />
   </ItemGroup>
 
   <ItemGroup>

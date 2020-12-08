@@ -3,7 +3,7 @@ Release Notes
 
 ## 5.1.0-rc-2
 
-- Updated `Giraffe` dependency to `5.0.0-rc-5` and changed from `TaskBuilder.fs` to `Ply` for `task` CEs.
+- Updated `Giraffe` dependency to `5.0.0-rc-6` and changed from `TaskBuilder.fs` to `Ply` for `task` CEs.
 
 ## 5.1.0-rc-1
 

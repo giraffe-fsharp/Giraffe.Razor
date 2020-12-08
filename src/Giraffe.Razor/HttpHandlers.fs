@@ -12,7 +12,7 @@ module HttpHandlers =
     open Microsoft.AspNetCore.Mvc.ViewFeatures
     open Microsoft.Extensions.DependencyInjection
     open Microsoft.AspNetCore.Antiforgery
-    open FSharp.Control.Tasks.Builders
+    open FSharp.Control.Tasks
     open Giraffe
     open RazorEngine
 
