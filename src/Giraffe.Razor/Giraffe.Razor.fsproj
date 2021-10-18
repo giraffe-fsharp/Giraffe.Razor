@@ -45,7 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Giraffe" Version="5.0.0-rc-6" />
+    <PackageReference Include="Giraffe" Version="5.0.0" />
     <PackageReference Include="Ply" Version="0.3.*" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.*" />
   </ItemGroup>
