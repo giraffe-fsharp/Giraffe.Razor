@@ -1,6 +1,10 @@
 Release Notes
 =============
 
+## 5.1.0
+
+- Final version. Use last version of `Giraffe`.
+
 ## 5.1.0-rc-2
 
 - Updated `Giraffe` dependency to `5.0.0-rc-6` and changed from `TaskBuilder.fs` to `Ply` for `task` CEs.
