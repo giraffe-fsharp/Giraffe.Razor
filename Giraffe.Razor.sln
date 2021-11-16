@@ -1,27 +1,32 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{03CCBA43-B6F5-4FA7-8C18-432BB07225FC}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe.Razor", "src\Giraffe.Razor\Giraffe.Razor.fsproj", "{9B52367B-CC80-452E-9062-7583995BFAC0}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Giraffe.Razor", "src\Giraffe.Razor\Giraffe.Razor.fsproj", "{9B52367B-CC80-452E-9062-7583995BFAC0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{E067A6B8-538E-4362-83C2-9ECBC486AC31}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "GiraffeRazorSample", "samples\GiraffeRazorSample\GiraffeRazorSample.fsproj", "{14818084-9969-4F42-8A66-394FC6670B50}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "GiraffeRazorSample", "samples\GiraffeRazorSample\GiraffeRazorSample.fsproj", "{14818084-9969-4F42-8A66-394FC6670B50}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_root", "_root", "{73E09F74-F64D-4C42-92FC-19731C0C5553}"
-ProjectSection(SolutionItems) = preProject
-	.gitignore = .gitignore
-	.gitattributes = .gitattributes
-	LICENSE = LICENSE
-	NuGet.config = NuGet.config
-	README.md = README.md
-	RELEASE_NOTES.md = RELEASE_NOTES.md
-	giraffe-64x64.png = giraffe-64x64.png
-	CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		giraffe-64x64.png = giraffe-64x64.png
+		LICENSE = LICENSE
+		NuGet.config = NuGet.config
+		README.md = README.md
+		RELEASE_NOTES.md = RELEASE_NOTES.md
+	EndProjectSection
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Models", "samples\Models\Models.fsproj", "{7FF78E51-A357-4D4B-90FF-B03E148AE18C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorClassLibrary", "samples\RazorClassLibrary\RazorClassLibrary.csproj", "{0A429935-F750-4334-98BE-9FC26764A174}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,13 +36,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{9B52367B-CC80-452E-9062-7583995BFAC0} = {03CCBA43-B6F5-4FA7-8C18-432BB07225FC}
-		{14818084-9969-4F42-8A66-394FC6670B50} = {E067A6B8-538E-4362-83C2-9ECBC486AC31}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9B52367B-CC80-452E-9062-7583995BFAC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -64,5 +62,39 @@ Global
 		{14818084-9969-4F42-8A66-394FC6670B50}.Release|x64.Build.0 = Release|Any CPU
 		{14818084-9969-4F42-8A66-394FC6670B50}.Release|x86.ActiveCfg = Release|Any CPU
 		{14818084-9969-4F42-8A66-394FC6670B50}.Release|x86.Build.0 = Release|Any CPU
+		{7FF78E51-A357-4D4B-90FF-B03E148AE18C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FF78E51-A357-4D4B-90FF-B03E148AE18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FF78E51-A357-4D4B-90FF-B03E148AE18C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7FF78E51-A357-4D4B-90FF-B03E148AE18C}.Debug|x64.Build.0 = Debug|Any CPU
+		{7FF78E51-A357-4D4B-90FF-B03E148AE18C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7FF78E51-A357-4D4B-90FF-B03E148AE18C}.Debug|x86.Build.0 = Debug|Any CPU
+		{7FF78E51-A357-4D4B-90FF-B03E148AE18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FF78E51-A357-4D4B-90FF-B03E148AE18C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FF78E51-A357-4D4B-90FF-B03E148AE18C}.Release|x64.ActiveCfg = Release|Any CPU
+		{7FF78E51-A357-4D4B-90FF-B03E148AE18C}.Release|x64.Build.0 = Release|Any CPU
+		{7FF78E51-A357-4D4B-90FF-B03E148AE18C}.Release|x86.ActiveCfg = Release|Any CPU
+		{7FF78E51-A357-4D4B-90FF-B03E148AE18C}.Release|x86.Build.0 = Release|Any CPU
+		{0A429935-F750-4334-98BE-9FC26764A174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A429935-F750-4334-98BE-9FC26764A174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A429935-F750-4334-98BE-9FC26764A174}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0A429935-F750-4334-98BE-9FC26764A174}.Debug|x64.Build.0 = Debug|Any CPU
+		{0A429935-F750-4334-98BE-9FC26764A174}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0A429935-F750-4334-98BE-9FC26764A174}.Debug|x86.Build.0 = Debug|Any CPU
+		{0A429935-F750-4334-98BE-9FC26764A174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A429935-F750-4334-98BE-9FC26764A174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A429935-F750-4334-98BE-9FC26764A174}.Release|x64.ActiveCfg = Release|Any CPU
+		{0A429935-F750-4334-98BE-9FC26764A174}.Release|x64.Build.0 = Release|Any CPU
+		{0A429935-F750-4334-98BE-9FC26764A174}.Release|x86.ActiveCfg = Release|Any CPU
+		{0A429935-F750-4334-98BE-9FC26764A174}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9B52367B-CC80-452E-9062-7583995BFAC0} = {03CCBA43-B6F5-4FA7-8C18-432BB07225FC}
+		{14818084-9969-4F42-8A66-394FC6670B50} = {E067A6B8-538E-4362-83C2-9ECBC486AC31}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D44B626-1BB8-4B87-8E9F-045072A0598C}
 	EndGlobalSection
 EndGlobal
