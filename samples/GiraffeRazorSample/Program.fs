@@ -95,11 +95,23 @@ let viewData =
         "Bar", true :> obj
     ]
 
+let renderIndex =
+    """
+    <p>non razor index</p>
+    <ul>
+        <li><a href=/razor>razor</a></li></li>
+        <li><a href=/person>person</a></li></li>
+        <li><a href=/person/create>person/create</li></a></li>
+        <li><a href=/upload>upload</a></li>
+    </ul>
+    """
+    |> htmlString
+
 let webApp =
     choose [
         GET >=>
             choose [
-                route  "/"              >=> text "index"
+                route  "/"              >=> renderIndex
                 route  "/razor"         >=> razorView "text/html" "Hello" None (Some viewData) None
                 route  "/person/create" >=> renderCreatePerson
                 route  "/person"        >=> renderPerson
