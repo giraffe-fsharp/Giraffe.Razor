@@ -10,22 +10,17 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Giraffe.Razor\Giraffe.Razor.fsproj" />
+    <ProjectReference Include="..\Models\Models.fsproj" />
+    <ProjectReference Include="..\RazorClassLibrary\RazorClassLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-
-  <ItemGroup>
-    <Watch Include="**\*.cshtml" Exclude="bin\**\*" />
+    <None Include="Properties\launchSettings.json" />
+    <Content Include="wwwroot\main.css" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Include="Program.fs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Views\*.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>

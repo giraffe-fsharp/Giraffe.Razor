@@ -13,23 +13,7 @@ open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
 open Giraffe
 open Giraffe.Razor
-
-// ---------------------------------
-// Models
-// ---------------------------------
-
-[<CLIMutable>]
-type Person =
-    {
-        Name : string
-    }
-
-[<CLIMutable>]
-type CreatePerson =
-    {
-        Name    : string
-        CheckMe : bool
-    }
+open Models
 
 // ---------------------------------
 // Web app
@@ -80,7 +64,7 @@ let renderPerson =
 
 let renderCreatePerson =
     let model = { Name = ""; CheckMe = true }
-    let viewData = dict [("Title", box "Create peson")]
+    let viewData = dict [("Title", box "Create person")]
     razorHtmlView "CreatePerson" (Some model) (Some viewData) None
 
 let createPerson =
@@ -96,7 +80,7 @@ let createPerson =
                 let url = sprintf "/person?name=%s" model.Name
                 return! redirectTo false url next ctx
             else
-                let viewData = dict [("Title", box "Create peson")]
+                let viewData = dict [("Title", box "Create person")]
                 return! razorHtmlView "CreatePerson" (Some model) (Some viewData) (Some modelState) next ctx
         }
 
@@ -147,9 +131,14 @@ let configureServices (services : IServiceCollection) =
     let sp  = services.BuildServiceProvider()
     let env = sp.GetService<IWebHostEnvironment>()
     services.AddGiraffe() |> ignore
-    Path.Combine(env.ContentRootPath, "Views")
+    services.AddMvc() |> ignore // Required for Razor views to work, regardless of runtime compilation or not.
+    // Only use Razor runtime compilation in DEBUG (For hot reload to work)
+    // The statically compiled views are used in Release mode.
+#if DEBUG
+    Path.GetFullPath(Path.Combine(env.ContentRootPath, "..", "RazorClassLibrary"))
     |> services.AddRazorEngine
     |> ignore
+#endif
 
 let configureLogging (loggerBuilder : ILoggingBuilder) =
     loggerBuilder.AddFilter(fun lvl -> lvl.Equals LogLevel.Error)
