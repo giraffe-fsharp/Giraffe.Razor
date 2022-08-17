@@ -61,6 +61,7 @@ let smallFileUploadHandler =
 let largeFileUploadHandler =
     fun (next : HttpFunc) (ctx : HttpContext) ->
         task {
+            ctx.Request.HasFormContentType |>ignore //otherwise formFeature will be null
             let formFeature = ctx.Features.Get<IFormFeature>()
             let! form = formFeature.ReadFormAsync CancellationToken.None
             return! (form.Files |> displayFileInfos) next ctx
