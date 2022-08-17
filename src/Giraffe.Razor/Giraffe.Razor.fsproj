@@ -11,7 +11,7 @@
     <NoWarn>$(NoWarn);NU5104</NoWarn>
 
     <!-- Build settings -->
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <DebugType>portable</DebugType>
     <OutputType>Library</OutputType>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -45,8 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Giraffe" Version="5.0.0-rc-6" />
-    <PackageReference Include="Ply" Version="0.3.*" />
+    <PackageReference Include="Giraffe" Version="6" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.*" />
   </ItemGroup>
 
