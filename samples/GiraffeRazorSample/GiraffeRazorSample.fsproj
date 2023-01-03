@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>GiraffeRazorSample</AssemblyName>
     <PackageId>GiraffeRazorSample</PackageId>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
@@ -10,10 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Giraffe.Razor\Giraffe.Razor.fsproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Ply" Version="0.3.*" />
   </ItemGroup>
 
   <ItemGroup>
