@@ -7,7 +7,6 @@ open Microsoft.AspNetCore
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Microsoft.AspNetCore.Http
-open Microsoft.AspNetCore.Http.Features
 open Microsoft.AspNetCore.Mvc.ModelBinding
 open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
@@ -45,12 +44,7 @@ let smallFileUploadHandler =
 let largeFileUploadHandler =
     fun (next : HttpFunc) (ctx : HttpContext) ->
         task {
-            // Simply accessing this property triggers something necessary
-            // for the IFormFeature instance to be injected (without this, it's null)
-            // see https://stackoverflow.com/questions/65967338/how-do-i-enable-iformfeature-in-asp-net-kestrel
-            let formContentType = ctx.Request.HasFormContentType
-            let formFeature = ctx.Features.Get<IFormFeature>()
-            let! form = formFeature.ReadFormAsync CancellationToken.None
+            let! form = ctx.Request.ReadFormAsync CancellationToken.None
             return! (form.Files |> displayFileInfos) next ctx
         }
 
