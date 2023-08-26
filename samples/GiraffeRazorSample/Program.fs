@@ -7,30 +7,12 @@ open Microsoft.AspNetCore
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Microsoft.AspNetCore.Http
-open Microsoft.AspNetCore.Http.Features
 open Microsoft.AspNetCore.Mvc.ModelBinding
 open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
-open FSharp.Control.Tasks
 open Giraffe
 open Giraffe.Razor
-
-// ---------------------------------
-// Models
-// ---------------------------------
-
-[<CLIMutable>]
-type Person =
-    {
-        Name : string
-    }
-
-[<CLIMutable>]
-type CreatePerson =
-    {
-        Name    : string
-        CheckMe : bool
-    }
+open Models
 
 // ---------------------------------
 // Web app
@@ -62,8 +44,7 @@ let smallFileUploadHandler =
 let largeFileUploadHandler =
     fun (next : HttpFunc) (ctx : HttpContext) ->
         task {
-            let formFeature = ctx.Features.Get<IFormFeature>()
-            let! form = formFeature.ReadFormAsync CancellationToken.None
+            let! form = ctx.Request.ReadFormAsync CancellationToken.None
             return! (form.Files |> displayFileInfos) next ctx
         }
 
@@ -81,7 +62,7 @@ let renderPerson =
 
 let renderCreatePerson =
     let model = { Name = ""; CheckMe = true }
-    let viewData = dict [("Title", box "Create peson")]
+    let viewData = dict [("Title", box "Create person")]
     razorHtmlView "CreatePerson" (Some model) (Some viewData) None
 
 let createPerson =
@@ -97,7 +78,7 @@ let createPerson =
                 let url = sprintf "/person?name=%s" model.Name
                 return! redirectTo false url next ctx
             else
-                let viewData = dict [("Title", box "Create peson")]
+                let viewData = dict [("Title", box "Create person")]
                 return! razorHtmlView "CreatePerson" (Some model) (Some viewData) (Some modelState) next ctx
         }
 
@@ -108,11 +89,23 @@ let viewData =
         "Bar", true :> obj
     ]
 
+let renderIndex =
+    """
+    <p>non razor index</p>
+    <ul>
+        <li><a href=/razor>razor</a></li></li>
+        <li><a href=/person>person</a></li></li>
+        <li><a href=/person/create>person/create</li></a></li>
+        <li><a href=/upload>upload</a></li>
+    </ul>
+    """
+    |> htmlString
+
 let webApp =
     choose [
         GET >=>
             choose [
-                route  "/"              >=> text "index"
+                route  "/"              >=> renderIndex
                 route  "/razor"         >=> razorView "text/html" "Hello" None (Some viewData) None
                 route  "/person/create" >=> renderCreatePerson
                 route  "/person"        >=> renderPerson
@@ -132,7 +125,7 @@ let webApp =
 
 let errorHandler (ex : Exception) (logger : ILogger) =
     logger.LogError(EventId(), ex, "An unhandled exception has occurred while executing the request.")
-    clearResponse >=> ServerErrors.INTERNAL_ERROR (text ex.Message)
+    clearResponse >=> ServerErrors.INTERNAL_ERROR ex.Message
 
 // ---------------------------------
 // Main
@@ -148,9 +141,14 @@ let configureServices (services : IServiceCollection) =
     let sp  = services.BuildServiceProvider()
     let env = sp.GetService<IWebHostEnvironment>()
     services.AddGiraffe() |> ignore
-    Path.Combine(env.ContentRootPath, "Views")
+    services.AddMvc() |> ignore // Required for Razor views to work, regardless of runtime compilation or not.
+    // Only use Razor runtime compilation in DEBUG (For hot reload to work)
+    // The statically compiled views are used in Release mode.
+#if DEBUG
+    Path.GetFullPath(Path.Combine(env.ContentRootPath, "..", "RazorClassLibrary"))
     |> services.AddRazorEngine
     |> ignore
+#endif
 
 let configureLogging (loggerBuilder : ILoggingBuilder) =
     loggerBuilder.AddFilter(fun lvl -> lvl.Equals LogLevel.Error)

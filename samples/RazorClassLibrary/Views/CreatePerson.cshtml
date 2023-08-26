@@ -1,11 +1,11 @@
-@model GiraffeRazorSample.CreatePerson
+@model Models.CreatePerson
 @{
     Layout = "_Layout";
 }
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <div>
-    <h3>Create Person</h3>
+    <h3>@ViewData["Title"]</h3>
     <form method="post" role="form" asp-antiforgery="true">
         <div asp-validation-summary="All" class="danger-text"></div>
         <p>

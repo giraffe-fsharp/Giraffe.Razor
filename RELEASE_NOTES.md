@@ -1,6 +1,13 @@
 Release Notes
 =============
 
+## 5.2.0 
+
+- Upgraded to .NET 7
+- Updated `Giraffe` dependency to `6.0.0`
+- Updated Sample project
+- Changed `Ply` to native `task` CE
+
 ## 5.1.0-rc-2
 
 - Updated `Giraffe` dependency to `5.0.0-rc-6` and changed from `TaskBuilder.fs` to `Ply` for `task` CEs.
